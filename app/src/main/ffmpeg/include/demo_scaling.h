@@ -5,6 +5,6 @@
 #ifndef SWS_SCALE_DEMO_DEMO_SCALING_H
 #define SWS_SCALE_DEMO_DEMO_SCALING_H
 
-#include "../libs/libswscale/include/swscale.h"
+#include <libswscale/swscale.h>
 
 #endif //SWS_SCALE_DEMO_DEMO_SCALING_H

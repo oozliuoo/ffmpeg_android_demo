@@ -13,26 +13,25 @@ set(CMAKE_VERBOSE_MAKEFILE on)
 
 
 add_library( # Specifies the name of the library
-             libswscale
+             libswscale-4
 
              # Sets the library as static library
              STATIC IMPORTED)
-set_target_properties( libswscale
+set_target_properties( libswscale-4
                        PROPERTIES
-                       IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/src/main/ffmpeg/libs/libswscale/libswscale.a)
+                       IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/libs/armeabi-v7a/libswscale-4.so)
 
 add_library( # Specifies the name of the library
-             libavutil
+             libavutil-55
 
              # Sets the library as static library
              STATIC IMPORTED)
-set_target_properties( libavutil
+set_target_properties( libavutil-55
                        PROPERTIES
-                       IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/src/main/ffmpeg/libs/libavutil/libavutil.a)
+                       IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/libs/armeabi-v7a/libavutil-55.so)
 
 # Specifies a path to native header files.
-include_directories(${CMAKE_SOURCE_DIR}/src/main/ffmpeg/libs/libswscale/include/)
-include_directories(${CMAKE_SOURCE_DIR}/src/main/ffmpeg/libs/libavutil/include/)
+include_directories(${CMAKE_SOURCE_DIR}/libs/include)
 
 add_library( # Specifies the name of the library.
              demo_scaling
@@ -44,7 +43,6 @@ add_library( # Specifies the name of the library.
              src/main/ffmpeg/demo_scaling.c )
 include_directories(src/main/ffmpeg/include/)
 target_include_directories( demo_scaling PRIVATE
-                            ${CMAKE_SOURCE_DIR}/src/main/ffmpeg/libs/libswscale/include/
-                            ${CMAKE_SOURCE_DIR}/src/main/ffmpeg/libs/libavutil/include/
+                            ${CMAKE_SOURCE_DIR}/libs/include/
                             )
-target_link_libraries( demo_scaling libswscale libavutil )
+target_link_libraries( demo_scaling libswscale-4 libavutil-55 )

@@ -19,6 +19,14 @@ android {
                 cFlags "-Wall", "-O2", "-g"
             }
         }
+        ndk {
+            abiFilters 'armeabi-v7a'
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
     }
     buildTypes {
         release {
